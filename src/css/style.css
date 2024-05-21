@@ -1,0 +1,5 @@
+.config-game{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Define 5 columnas de igual tamaño */
+    grid-gap: 10px; /* Espaciado entre las tablas */
+}
