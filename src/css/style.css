@@ -65,36 +65,63 @@ label {
     height: 0;
 }
 
-/* IMAGE STYLES */
-.operationRadio~.operationImage {
-    cursor: pointer;
-}
-
-/* CHECKED STYLES */
-.operationRadio:checked~img {
-    outline: 4px solid #270f11;
-}
-
-.operationRadio:hover~img {
-    outline: 4px solid #270f11;
-}
-
-.operationRadio:not(:checked)+.operationImage.checked,
-.operationRadio:checked~.operationImage {
-    display: none;
-}
-
-.operationRadio:checked+.operationImage.checked,
-.operationRadio:not(:checked)~.operationImage {
-    display: block;
-}
-
 
 .submitBtn {
+    cursor: pointer;
     background-image: linear-gradient(to right, #D90429, #EF233C);
     color: white;
     font-size: 2em;
     border-style: none;
     border-radius: 30px;
     padding: 10px 20px;
+
 }
+
+
+/* IMAGE STYLES */
+.operationRadio~.operationImage,
+.operationRadio~.operationImage.checked {
+  cursor: pointer;
+  transition: opacity .5s ease-in-out;
+}
+
+/* CHECKED STYLES */
+.operationRadio:checked~.operationImage {
+  opacity: 0;
+}
+
+.operationRadio:checked~.operationImage.checked {
+  opacity: 1;
+  animation: reveal 2s;
+}
+
+.operationRadio:checked+.operationImage.checked,
+.operationRadio:not(:checked)~.operationImage {
+  display: block;
+}
+
+.operationRadio:not(:checked)+.operationImage.checked,
+.operationRadio:checked~.operationImage {
+  display: none;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
