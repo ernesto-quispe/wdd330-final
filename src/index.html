@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Ernesto Quispe - WDD 330 - Web Frontend Development II">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="public/images/_d9275f0d-40aa-430a-b1eb-df6a3ecae968.jpeg">
-    <meta property="og:url" content="https://ernesto-quispe.github.io/wdd230/">
-    <title>Ernesto Quispe - WDD 330 - Web Frontend Developmen II</title>
-    <meta name="description" content="Ernesto Quispe | WDD 330 - Webfrontend Development II | Final Project.">
-    <meta name="author" content="Ernesto Quispe">
-    <link rel="icon" href="images/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css" />
-    <script src="js/main.js" type="module"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Ernesto Quispe - WDD 330 - Web Frontend Development II">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="public/images/_d9275f0d-40aa-430a-b1eb-df6a3ecae968.jpeg">
+  <meta property="og:url" content="https://ernesto-quispe.github.io/wdd230/">
+  <title>Ernesto Quispe - WDD 330 - Web Frontend Developmen II</title>
+  <meta name="description" content="Ernesto Quispe | WDD 330 - Webfrontend Development II | Final Project.">
+  <meta name="author" content="Ernesto Quispe">
+  <link rel="icon" href="images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="/css/style.css" /> -->
+  <link rel="stylesheet" href="/src/css/style.css" />
+  <script src="js/main.js" type="module"></script>
 </head>
+
 <body>
 
   <main>
-      <h1>Math Adventure</h1>
-      <div class="config-game">
-         <h2>Operations</h2>
-        <div class="grip-game">
-            <label>Alias: <input type="text" id="alias" name="alias"></label>
+    <h1>Math Adventure</h1>
+    <div class="config-game">
+      <h2>Choose Game Mode</h2>
+      <form action="/startgame" method="GET">
+        <label>Enter Your Name: <input type="text" id="alias" name="alias" required></label>
+        <div class="operationSelector">
+        <label class="operationLabels"><input type="radio" id="sum" name="opcion" value="sum" class="operationRadio">
+          <img src="/src/public/images/plusIcon-green-100.webp" alt="Addition Icon" class="operationImage checked">
 
-            <label>Addition<input type="radio" id="sum" name="opcion" value="sum"></label>
-            <label>Subtraction<input type="radio" id="sub" name="opcion" value="sub"></label>
-            <label>Multiplication <input type="radio" id="mul" name="opcion" value="mul"></label>
-            <label>Division<input type="radio" id="div" name="opcion" value="div"></label>
-            <hr>
-            <input type="submit" value="START GAME">
-        </div>
+          <img src="/src/public/images/plusIcon-100.webp" alt="Addition Icon" class="operationImage">
+        </label>
+        <label class="operationLabels"><input type="radio" id="sub" name="opcion" value="sub" class="operationRadio">
+          <img src="/src/public/images/minusIcon-green-100.webp" alt="Subtraction Icon" class="operationImage checked">
+
+          <img src="/src/public/images/minusIcon-100.webp" alt="Subtraction Icon" class="operationImage">
+        </label>
+        <label class="operationLabels"><input type="radio" id="mul" name="opcion" value="mul" class="operationRadio">
+          <img src="/src/public/images/multiplyIcon-green-100.webp" alt="Multiplication Icon"
+            class="operationImage checked">
+
+          <img src="/src/public/images/multiplyIcon-100.webp" alt="Multiplication Icon" class="operationImage">
+        </label>
+        <label class="operationLabels"><input type="radio" id="div" name="opcion" value="div" class="operationRadio">
+          <img src="/src/public/images/divideIcon-green-100.webp" alt="Division Icon" class="operationImage checked">
+
+          <img src="/src/public/images/divideIcon-100.webp" alt="Division Icon" class="operationImage">
+        </label>
       </div>
-  </main>  
+        <input class="submitBtn" type="submit" value="START GAME">
+      </form>
+    </div>
+  </main>
 
 </body>
+
 </html>

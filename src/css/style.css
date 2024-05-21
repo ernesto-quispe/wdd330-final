@@ -1,5 +1,100 @@
-.config-game{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Define 5 columnas de igual tamaño */
-    grid-gap: 10px; /* Espaciado entre las tablas */
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+main {
+    max-width: 500px;
+    margin: auto;
+}
+
+.config-game {
+    max-width: 90%;
+    margin: auto;
+}
+
+.config-game form {
+    margin: auto;
+    text-align: center;
+}
+
+.operationSelector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    margin: 10px auto 10px auto;
+    border-bottom: solid;
+}
+
+input[type=text] {
+    display: block;
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+    border-radius: 10px;
+}
+
+label {
+    margin: 10px;
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+
+}
+
+
+.operationImage {
+    border-radius: 5px;
+    max-width: 60px;
+    height: auto;
+    box-shadow: 0 0 3px .5px #610111;
+}
+
+
+/* HIDE RADIO */
+.operationRadio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+.operationRadio~.operationImage {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+.operationRadio:checked~img {
+    outline: 4px solid #270f11;
+}
+
+.operationRadio:hover~img {
+    outline: 4px solid #270f11;
+}
+
+.operationRadio:not(:checked)+.operationImage.checked,
+.operationRadio:checked~.operationImage {
+    display: none;
+}
+
+.operationRadio:checked+.operationImage.checked,
+.operationRadio:not(:checked)~.operationImage {
+    display: block;
+}
+
+
+.submitBtn {
+    background-image: linear-gradient(to right, #D90429, #EF233C);
+    color: white;
+    font-size: 2em;
+    border-style: none;
+    border-radius: 30px;
+    padding: 10px 20px;
 }
