@@ -92,7 +92,7 @@ label {
 
 .operationRadio:checked~.operationImage.checked {
   opacity: 1;
-  animation: reveal 2s;
+  animation: reveal 1s;
 }
 
 .operationRadio:checked+.operationImage.checked,
