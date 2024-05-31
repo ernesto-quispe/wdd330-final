@@ -4,9 +4,13 @@ import ExternalServices from "./ExternalServices.mjs";
 loadHeaderFooter();
 
 activateOperationButtons();
-const dataSource = new ExternalServices();
 
-const data = await dataSource.getData();
+async function fetchData() {
+    const dataSource = new ExternalServices();
+    await dataSource.getData();
+  }
+  
+  fetchData(); // Call the async function
 
 // https://opentdb.com/api.php?amount=10&category=19&difficulty=easy&type=multiple
 
