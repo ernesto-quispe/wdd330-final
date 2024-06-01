@@ -13,20 +13,21 @@ export function getLocalStorage(key) {
 export function setLocalStorage(key, data) {
 
   //let parsedData = JSON.stringify(data);
-  let keys = getLocalStorage(key);
+  // let currentData = getLocalStorage(key);
+  
 
-  if (keys && Array.isArray(keys)) {
-    let dataArray = [...keys, data];
-    localStorage.setItem(key, JSON.stringify(dataArray));
-  }
-  else if (keys) {
-    let dataArray = [keys, data];
-    localStorage.setItem(key, JSON.stringify(dataArray));
-  }
-  else{
-    let dataArray = [data];
-    localStorage.setItem(key, JSON.stringify(dataArray));
-  }
+  // if (keys && Array.isArray(keys)) {
+  //   let dataArray = [...keys, data];
+  //   localStorage.setItem(key, JSON.stringify(dataArray));
+  // }
+  // else if (keys) {
+  //   let dataArray = [keys, data];
+  //   localStorage.setItem(key, JSON.stringify(dataArray));
+  // }
+  // else{
+  //   let dataArray = [data];
+    localStorage.setItem(key, JSON.stringify(data));
+  // }
 }
 export function clearLocalStorage(key) {
     localStorage.removeItem(key);
@@ -45,7 +46,7 @@ export function setClick(selector, callback) {
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get('product')
+  const product = urlParams.get(param)
   return product
 }
 

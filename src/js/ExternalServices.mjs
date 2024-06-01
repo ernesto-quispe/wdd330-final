@@ -13,17 +13,16 @@ function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  // constructor(category) {
-  //   this.category = category;
-  
-  // }
-  async getData(category="") {
-    try {
+  constructor() {
 
-      const response = await fetch(baseURL+category);
+  }
+  async getData(max1,max2,level,operator) {
+    try {
+      let url = `${baseURL}/?max1=${max1}&max2=${max2}&level=${level}&operator=${operator}`
+      
+      const response = await fetch(url);
       const result = await convertToJson(response);
       // const result = await convertToJson(response);
-	console.log(result);
       return result;
 
     } catch (error) {
