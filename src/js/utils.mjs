@@ -14,7 +14,7 @@ export function setLocalStorage(key, data) {
 
   //let parsedData = JSON.stringify(data);
   // let currentData = getLocalStorage(key);
-  
+
 
   // if (keys && Array.isArray(keys)) {
   //   let dataArray = [...keys, data];
@@ -26,11 +26,11 @@ export function setLocalStorage(key, data) {
   // }
   // else{
   //   let dataArray = [data];
-    localStorage.setItem(key, JSON.stringify(data));
+  localStorage.setItem(key, JSON.stringify(data));
   // }
 }
 export function clearLocalStorage(key) {
-    localStorage.removeItem(key);
+  localStorage.removeItem(key);
 }
 
 
@@ -97,7 +97,7 @@ export async function loadHeaderFooter() {
 export function alertMessage(message, scroll = true, duration = 3000) {
   const alert = document.createElement("div");
   alert.classList.add("alert");
-  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+  alert.innerHTML = `<p>${message}</p><span class="closeAlert">X</span>`;
 
   alert.addEventListener("click", function (e) {
     if (e.target.tagName == "SPAN") {
@@ -111,9 +111,9 @@ export function alertMessage(message, scroll = true, duration = 3000) {
   if (scroll) window.scrollTo(0, 0);
 
   // left this here to show how you could remove the alert automatically after a certain amount of time.
-  // setTimeout(function () {
-  //   main.removeChild(alert);
-  // }, duration);
+  setTimeout(function () {
+    main.removeChild(alert);
+  }, duration);
 }
 
 export function removeAllAlerts() {
@@ -121,12 +121,29 @@ export function removeAllAlerts() {
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }
 
-export function activateOperationButtons(){
+export function activateOperationButtons() {
   const operationImages = document.querySelectorAll(".operationImage");
   const operationCheckedImages = document.querySelectorAll(".checked");
   operationImages.forEach((image) => image.addEventListener("click", (e) => {
 
     console.log(e);
   }))
+
+}
+
+export function addListenersRadio() {
+  const radioInputs = document.querySelectorAll('input[type="radio"]');
+  radioInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      radioInputs.forEach((input) => {
+        input.parentElement.style.color = '';
+      });
+      if (input.checked) {
+        input.parentElement.style.color = 'blue';
+      } else {
+        input.parentElement.style.color = ''; // Reset to default color
+      }
+    });
+  });
 
 }

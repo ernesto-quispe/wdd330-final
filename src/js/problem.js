@@ -10,9 +10,9 @@ loadHeaderFooter();
 
 activateOperationButtons();
 
+const alias = getParam("alias");
 let problem = new ProblemDetails();
 problem.init();
-
 
 
 

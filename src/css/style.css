@@ -8,9 +8,9 @@ h2 {
     text-align: center;
 }
 
-main {
+main, footer {
     max-width: 500px;
-    margin: auto;
+    margin: 20px auto 20px auto;
 }
 
 .logo {
@@ -80,65 +80,106 @@ label {
     display: block;
     font-size: 1.5em;
     font-weight: bold;
-
+    
 }
 
 
 .operationImage {
-    border-radius: 5px;
-    max-width: 60px;
-    height: auto;
-    box-shadow: 0 0 3px .5px #610111;
+  border-radius: 5px;
+  max-width: 60px;
+  height: auto;
+  box-shadow: 0 0 3px .5px #610111;
 }
 
 
 /* HIDE RADIO */
-.operationRadio {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+.operationRadio, .answerRadio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 
 .submitBtn {
-    cursor: pointer;
-    background-image: linear-gradient(to right, #D90429, #EF233C);
-    color: white;
-    font-size: 2em;
-    border-style: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-
+  cursor: pointer;
+  background-image: linear-gradient(to right, #D90429, #EF233C);
+  color: white;
+  font-size: 2em;
+  border-style: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin:auto;
 }
 
 
 /* IMAGE STYLES */
 .operationRadio~.operationImage,
 .operationRadio~.operationImage.checked {
-  cursor: pointer;
-  transition: opacity .5s ease-in-out;
+cursor: pointer;
+transition: opacity .5s ease-in-out;
 }
 
 /* CHECKED STYLES */
 .operationRadio:checked~.operationImage {
-  opacity: 0;
+opacity: 0;
 }
 
 .operationRadio:checked~.operationImage.checked {
-  opacity: 1;
-  animation: reveal 1s;
+opacity: 1;
+animation: reveal 1s;
 }
 
 .operationRadio:checked+.operationImage.checked,
 .operationRadio:not(:checked)~.operationImage {
-  display: block;
+display: block;
 }
 
 .operationRadio:not(:checked)+.operationImage.checked,
 .operationRadio:checked~.operationImage {
-  display: none;
+display: none;
 }
+
+
+.alert{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.closeAlert{
+  cursor: pointer;
+  padding:10px;
+}
+.closeAlert:hover{
+  background-color: red;
+  color:white;
+}
+.questionForm{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  padding:0;
+}
+.questionForm div, .question {
+  width:70%;
+}
+.answerLabel, .question{
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+ 
+  margin:10px auto 10px auto;
+  padding:20px;
+}
+
+.answerLabel:hover{
+  background-color: #e01a3b;
+  color:white;
+}
+
 
 
 
