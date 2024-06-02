@@ -1,16 +1,17 @@
 :root {
-    --blue: #1e90ff;
-    --white: #ffffff;
+  --blue: #1e90ff;
+  --white: #ffffff;
 }
 
 h1,
 h2 {
-    text-align: center;
+  text-align: center;
 }
 
-main, footer {
-    max-width: 500px;
-    margin: 20px auto 20px auto;
+main,
+footer {
+  max-width: 500px;
+  margin: 20px auto 20px auto;
 }
 
 .logo {
@@ -23,12 +24,14 @@ main, footer {
   font-size: 30px;
   text-align: right;
   font-family: var(--font-headline);
-  margin:auto;
+  margin: auto;
 }
+
 .logo img {
   width: 60px;
   height: 60px;
 }
+
 .logo a {
   text-decoration: none;
   color: var(--font-body);
@@ -37,29 +40,32 @@ main, footer {
 
 
 .config-game {
-    max-width: 90%;
-    margin: auto;
+  max-width: 90%;
+  margin: auto;
 }
 
 .config-game form {
-    margin: auto;
-    text-align: center;
+  margin: auto;
+  text-align: center;
 }
 
-.operationSelector, .levelSelector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 90%;
-    margin: 10px auto 10px auto;
-    border-bottom: solid;
+.operationSelector,
+.levelSelector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  margin: 10px auto 10px auto;
+  border-bottom: solid;
 }
-.maxNumber{
+
+.maxNumber {
   align-items: center;
   justify-content: center;
   max-width: 90%;
   margin: 10px auto 10px auto;
 }
+
 input[type=number] {
   font-size: 1.5em;
   text-align: center;
@@ -68,19 +74,19 @@ input[type=number] {
 }
 
 input[type=text] {
-    display: block;
-    width: 100%;
-    font-size: 2em;
-    text-align: center;
-    border-radius: 10px;
+  display: block;
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+  border-radius: 10px;
 }
 
 label {
-    margin: 10px;
-    display: block;
-    font-size: 1.5em;
-    font-weight: bold;
-    
+  margin: 10px;
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+
 }
 
 
@@ -93,7 +99,8 @@ label {
 
 
 /* HIDE RADIO */
-.operationRadio, .answerRadio {
+.operationRadio,
+.answerRadio {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -109,75 +116,82 @@ label {
   border-style: none;
   border-radius: 30px;
   padding: 10px 20px;
-  margin:auto;
+  margin: auto;
 }
 
 
 /* IMAGE STYLES */
 .operationRadio~.operationImage,
 .operationRadio~.operationImage.checked {
-cursor: pointer;
-transition: opacity .5s ease-in-out;
+  cursor: pointer;
+  transition: opacity .5s ease-in-out;
 }
 
 /* CHECKED STYLES */
 .operationRadio:checked~.operationImage {
-opacity: 0;
+  opacity: 0;
 }
 
 .operationRadio:checked~.operationImage.checked {
-opacity: 1;
-animation: reveal 1s;
+  opacity: 1;
+  animation: reveal 1s;
 }
 
 .operationRadio:checked+.operationImage.checked,
 .operationRadio:not(:checked)~.operationImage {
-display: block;
+  display: block;
 }
 
 .operationRadio:not(:checked)+.operationImage.checked,
 .operationRadio:checked~.operationImage {
-display: none;
+  display: none;
 }
 
 
-.alert{
+.alert {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
 }
 
-.closeAlert{
+.closeAlert {
   cursor: pointer;
-  padding:10px;
+  padding: 10px;
 }
-.closeAlert:hover{
+
+.closeAlert:hover {
   background-color: red;
-  color:white;
+  color: white;
 }
-.questionForm{
-  display:flex;
+
+.questionForm {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
-  padding:0;
+  align-items: center;
+  padding: 0;
 }
-.questionForm div, .question {
-  width:70%;
+
+.questionForm div,
+.question {
+  width: 70%;
 }
-.answerLabel, .question{
+
+.answerLabel,
+.question {
   border-style: solid;
   border-radius: 5px;
   text-align: center;
- 
-  margin:10px auto 10px auto;
-  padding:20px;
+
+  margin: 10px auto 10px auto;
+  padding: 20px;
 }
 
-.answerLabel:hover{
+.answerLabel:hover {
   background-color: #e01a3b;
-  color:white;
+  color: white;
 }
 
 
@@ -192,6 +206,7 @@ display: none;
   transform-origin: 0% 150%;
   animation: l20-0 2s infinite linear;
 }
+
 .loader:before,
 .loader:after {
   content: "";
@@ -201,21 +216,48 @@ display: none;
   border-radius: 100px 0 0 100px;
   transform-origin: 100% 100%;
 }
+
 .loader:after {
   border-radius: 0 100px 100px 0;
   transform-origin: 0% 100%;
-  --s:-1;
+  --s: -1;
 }
+
 @keyframes l20-0 {
-   0%,10%   {transform:translateY(0)     scaleY(1)}
-   49.99%   {transform:translateY(-100%) scaleY(1)}
-   50%      {transform:translateY(-100%) scaleY(-1)}
-   90%,100% {transform:translateY(-200%) scaleY(-1)}
+
+  0%,
+  10% {
+    transform: translateY(0) scaleY(1)
+  }
+
+  49.99% {
+    transform: translateY(-100%) scaleY(1)
+  }
+
+  50% {
+    transform: translateY(-100%) scaleY(-1)
+  }
+
+  90%,
+  100% {
+    transform: translateY(-200%) scaleY(-1)
+  }
 }
+
 @keyframes l20-1 {
-   0%,20%  {transform:rotate(0deg)                    translate(0,0)     rotate(0deg)}
-   50%     {transform:rotate(calc(var(--s,1)*-90deg)) translate(0,0)     rotate(0deg)}
-   100%    {transform:rotate(calc(var(--s,1)*-90deg)) translate(0,-20px) rotate(calc(var(--s,1)*-90deg))}
+
+  0%,
+  20% {
+    transform: rotate(0deg) translate(0, 0) rotate(0deg)
+  }
+
+  50% {
+    transform: rotate(calc(var(--s, 1)*-90deg)) translate(0, 0) rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(calc(var(--s, 1)*-90deg)) translate(0, -20px) rotate(calc(var(--s, 1)*-90deg))
+  }
 }
 
 
@@ -224,6 +266,7 @@ display: none;
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -233,10 +276,8 @@ display: none;
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
 }
-
-
-
