@@ -10,24 +10,18 @@ export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 // save data to local storage
-export function setLocalStorage(key, data) {
+export function setLocalStorage(alias, operator, max1, max2, level, correct, incorrect) {
+  let gameSession = {
+      "alias": alias,
+      "operator": operator,
+      "max1": max1,
+      "max2": max2,
+      "level": level,
+      "correct": correct,
+      "incorrect": incorrect
+  };
 
-  //let parsedData = JSON.stringify(data);
-  // let currentData = getLocalStorage(key);
-
-
-  // if (keys && Array.isArray(keys)) {
-  //   let dataArray = [...keys, data];
-  //   localStorage.setItem(key, JSON.stringify(dataArray));
-  // }
-  // else if (keys) {
-  //   let dataArray = [keys, data];
-  //   localStorage.setItem(key, JSON.stringify(dataArray));
-  // }
-  // else{
-  //   let dataArray = [data];
-  localStorage.setItem(key, JSON.stringify(data));
-  // }
+  localStorage.setItem(alias, JSON.stringify(gameSession));
 }
 export function clearLocalStorage(key) {
   localStorage.removeItem(key);
@@ -112,7 +106,11 @@ export function alertMessage(message, scroll = true, duration = 3000) {
 
   // left this here to show how you could remove the alert automatically after a certain amount of time.
   setTimeout(function () {
+    try{
     main.removeChild(alert);
+    }catch{
+      console.log("alert already removed")
+    }
   }, duration);
 }
 

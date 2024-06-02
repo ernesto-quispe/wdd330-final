@@ -9,7 +9,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
-        problem: resolve(__dirname, "src/problem/index.html")
+        problem: resolve(__dirname, "src/problem/index.html"),
+        endGame: resolve(__dirname, "src/endGame/index.html")
       },
     },
   },

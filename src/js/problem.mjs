@@ -7,6 +7,8 @@ function setSettings() {
     const max1 = getParam("max1");
     const max2 = getParam("max2");
     const level = getParam("level");
+    let correct = 0
+    let incorrect = 0
 
     let gameSession = {
         "alias": alias,
@@ -17,7 +19,8 @@ function setSettings() {
         "correct": 0,
         "incorrect": 0
     }
-    setLocalStorage(alias, gameSession);
+
+    setLocalStorage(alias, operator, max1, max2, level, correct, incorrect );
     return alias;
 }
 
@@ -43,6 +46,8 @@ export default class ProblemDetails {
     }
 
     async createProblem() {
+
+
 
         this.problemDiv.innerHTML = '';
 
@@ -111,12 +116,20 @@ export default class ProblemDetails {
             this.score = document.querySelector("#currentScore")
             const selectedAnswer = this.getSelectedAnswer();
             this.checkAnswer(selectedAnswer);
-            await this.createProblem(); // recreate the problem
+
+            let gameSession = getLocalStorage(this.alias);
+            if (parseInt(gameSession.correct) + parseInt(gameSession.incorrect) < 11){
+                await this.createProblem(); // recreate the problem
+            }
+            else{
+
+                this.gameOver();
+            }
         });
 
-        window.onbeforeunload = function () {
-            return 'Are you sure you want to leave this page?';
-        };
+        // window.onbeforeunload = function () {
+        //     return 'Are you sure you want to leave this page?';
+        // };
 
         form.appendChild(submitButton);
         form.appendChild(problemDetails);
@@ -139,9 +152,16 @@ export default class ProblemDetails {
         if (selectedAnswer == correctAnswer) {
             // Correct answer, update score and display correct message
             this.updateScore(1);
+            let gameSession = getLocalStorage(this.alias);
+            gameSession.correct += 1;
+            setLocalStorage(this.alias, gameSession.operator, gameSession.max1, gameSession.max2, gameSession.level, gameSession.correct, gameSession.incorrect )
             alertMessage("Correct!");
         } else {
             // Incorrect answer, display incorrect message
+            let gameSession = getLocalStorage(this.alias);
+            gameSession.incorrect += 1;
+            setLocalStorage(this.alias, gameSession.operator, gameSession.max1, gameSession.max2, gameSession.level, gameSession.correct, gameSession.incorrect )
+            
             alertMessage("Incorrect. The correct answer is " + correctAnswer);
         }
     }
@@ -151,6 +171,10 @@ export default class ProblemDetails {
         const currentScore = parseInt(this.score.textContent, 10);
         console.log(increment, currentScore)
         this.score.textContent = (currentScore + increment).toString();
+    }
+    gameOver() {
+        const url = `../endGame/index.html?alias=${this.alias}`;
+        window.location = url;
     }
 }
 
