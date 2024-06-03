@@ -12,9 +12,11 @@ function scoreTemplate(gameSession){
     <div class="score-box">
     <p>Score: <span class="score">${gameSession.correct}</span></p>
     <p>Accuracy: <span class="accuracy">${(parseInt(gameSession.correct) / (parseInt(gameSession.correct) + parseInt(gameSession.incorrect))) * 100}%</span></p>
-    <p><a href="../problem/?alias=${gameSession.alias}&operator=${gameSession.operator}&max1=${gameSession.max1}&max2=${gameSession.max2}&level=${gameSession.level}">Go to problem page</a></p>
-    <p><a href="/">Exit</a></p>
-    
+    </div>
+    <div id="endgame-buttons">
+    <p class="submitBtn"><a href="../problem/?alias=${gameSession.alias}&operator=${gameSession.operator}&max1=${gameSession.max1}&max2=${gameSession.max2}&level=${gameSession.level}">Retry</a></p>
+    <p class="submitBtn"><a href="/">Exit</a></p>
+    </div>
     
     
     

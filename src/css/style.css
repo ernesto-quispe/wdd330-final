@@ -226,6 +226,27 @@ label {
   --s: -1;
 }
 
+#endgame-buttons, .score-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.score-box p {
+  background-image: linear-gradient(to right, lightyellow,rgba(255, 255, 224, 0.87));
+  font-size: 1.25em;
+  padding:20px;
+  border-radius: 10px;
+}
+#endgame-buttons .submitBtn{
+  margin-bottom:10px;
+  font-size:1.25em;
+}
+.submitBtn a:visited, .submitBtn a{
+  color:white;
+  text-decoration: none;
+}
+
 @keyframes l20-0 {
 
   0%,
@@ -290,5 +311,7 @@ label {
     flex-direction: column;
     align-items: center;
   }
-  
+  #endgame-buttons{
+    flex-direction: column;
+  }
 }
