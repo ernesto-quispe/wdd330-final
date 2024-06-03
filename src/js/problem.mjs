@@ -113,7 +113,7 @@ export default class ProblemDetails {
         submitButton.className = "submitBtn"
         
         let hintIcon = document.createElement('img');
-        hintIcon.src = '../public/images/hint.webp';
+        hintIcon.src = '/images/hint.webp';
         hintIcon.alt = 'Hint';
         hintIcon.title = 'Disable one wrong answer.';
         hintIcon.onclick = this.disableRandomWrongAnswer;
