@@ -20,7 +20,7 @@ function setSettings() {
         "incorrect": incorrect
     }
 
-    setLocalStorage(alias, operator, max1, max2, level, correct, incorrect );
+    setLocalStorage(alias, operator, max1, max2, level, correct, incorrect);
     return alias;
 }
 
@@ -30,6 +30,7 @@ export default class ProblemDetails {
         this.problemDiv = document.querySelector('.problem');
         this.loaderimage = document.createElement('div');
         this.loaderimage.className = "loader";
+        this.level = getParam("level");
     }
     async init() {
         //console.log(this.alias)
@@ -39,9 +40,9 @@ export default class ProblemDetails {
 
     async getProblem(alias) {
 
-        let gameSettings = await getLocalStorage(alias)
+        this.gameSettings = await getLocalStorage(alias)
         const dataSource = new ExternalServices();
-        const problem = await dataSource.getData(gameSettings.max1, gameSettings.max2, gameSettings.level, gameSettings.operator);
+        const problem = await dataSource.getData(this.gameSettings.max1, this.gameSettings.max2, this.gameSettings.level, this.gameSettings.operator);
         return problem;
     }
 
@@ -57,10 +58,10 @@ export default class ProblemDetails {
         this.problemDiv.innerHTML = '';
         let question = document.createElement('h2');
         question.textContent = this.fullQuestion.question;
-        question.className="question";
+        question.className = "question";
         let answerDiv = document.createElement('div');
         let form = document.createElement('form');
-        form.className="questionForm";
+        form.className = "questionForm";
         form.action = './index.html'; // Set the form action attribute
         form.appendChild(question);
 
@@ -82,6 +83,7 @@ export default class ProblemDetails {
             wrongAnswerElement.name = 'answer';
             wrongAnswerElement.value = wrongAnswer;
             wrongAnswerElement.className = "answerRadio"
+            wrongAnswerElement.classList.add("wrong-answer")
             let wrongAnswerLabel = document.createElement('label');
             wrongAnswerLabel.className = "answerLabel"
             wrongAnswerLabel.textContent = wrongAnswer;
@@ -108,7 +110,16 @@ export default class ProblemDetails {
         let submitButton = document.createElement('button');
         submitButton.type = 'submit';
         submitButton.textContent = 'Submit Answer';
-        submitButton.className="submitBtn"
+        submitButton.className = "submitBtn"
+        
+        let hintIcon = document.createElement('img');
+        hintIcon.src = '../public/images/hint.webp';
+        hintIcon.alt = 'Hint';
+        hintIcon.title = 'Disable one wrong answer.';
+        hintIcon.onclick = this.disableRandomWrongAnswer;
+        hintIcon.className = "hint";
+
+        form.appendChild(hintIcon);
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault(); // prevent page reload
@@ -118,10 +129,10 @@ export default class ProblemDetails {
             this.checkAnswer(selectedAnswer);
 
             let gameSession = getLocalStorage(this.alias);
-            if (parseInt(gameSession.correct) + parseInt(gameSession.incorrect) < 3){
+            if (parseInt(gameSession.correct) + parseInt(gameSession.incorrect) < 3) {
                 await this.createProblem(); // recreate the problem
             }
-            else{
+            else {
 
                 this.gameOver();
             }
@@ -135,6 +146,20 @@ export default class ProblemDetails {
         form.appendChild(problemDetails);
         this.problemDiv.appendChild(form);
         addListenersRadio();
+    }
+
+    disableRandomWrongAnswer = () => {
+        const wrongAnswers = document.querySelectorAll(".wrong-answer");
+        const randomIndex = Math.floor(Math.random() * wrongAnswers.length);
+        const randomWrongAnswer = wrongAnswers[randomIndex];
+        randomWrongAnswer.disabled = true;
+        randomWrongAnswer.parentNode.style.background = "grey"; // Change the background of the parent label
+        randomWrongAnswer.parentNode.style.opacity = "0.5"; //
+        const hint = document.querySelector(".hint");
+        // console.log(this.level)
+        if (this.level == "hard") {
+            hint.style.display = "none";
+        }
     }
 
     getSelectedAnswer() {
@@ -154,14 +179,14 @@ export default class ProblemDetails {
             this.updateScore(1);
             let gameSession = getLocalStorage(this.alias);
             gameSession.correct += 1;
-            setLocalStorage(this.alias, gameSession.operator, gameSession.max1, gameSession.max2, gameSession.level, gameSession.correct, gameSession.incorrect )
+            setLocalStorage(this.alias, gameSession.operator, gameSession.max1, gameSession.max2, gameSession.level, gameSession.correct, gameSession.incorrect)
             alertMessage("Correct!");
         } else {
             // Incorrect answer, display incorrect message
             let gameSession = getLocalStorage(this.alias);
             gameSession.incorrect += 1;
-            setLocalStorage(this.alias, gameSession.operator, gameSession.max1, gameSession.max2, gameSession.level, gameSession.correct, gameSession.incorrect )
-            
+            setLocalStorage(this.alias, gameSession.operator, gameSession.max1, gameSession.max2, gameSession.level, gameSession.correct, gameSession.incorrect)
+
             alertMessage("Incorrect. The correct answer is " + correctAnswer);
         }
     }
@@ -169,7 +194,7 @@ export default class ProblemDetails {
     updateScore(increment) {
 
         const currentScore = parseInt(this.score.textContent, 10);
-        console.log(increment, currentScore)
+        // console.log(increment, currentScore)
         this.score.textContent = (currentScore + increment).toString();
     }
     gameOver() {

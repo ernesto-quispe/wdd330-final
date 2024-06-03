@@ -242,9 +242,17 @@ label {
   margin-bottom:10px;
   font-size:1.25em;
 }
-.submitBtn a:visited, .submitBtn a{
+.submitBtn:visited, .submitBtn{
   color:white;
   text-decoration: none;
+}
+.submitBtn p{
+  margin: 0;
+}
+.hint{
+  margin:5px;
+  width:60px;
+  height:auto;
 }
 
 @keyframes l20-0 {

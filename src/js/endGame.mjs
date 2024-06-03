@@ -6,7 +6,7 @@ import ExternalServices from "./ExternalServices.mjs";
 
 
 function scoreTemplate(gameSession){
-    console.log(gameSession.max1);
+    // console.log(gameSession.max1);
     let template = `
     <h2><span class="acheivement">Excelent! </span>${gameSession.alias}</h2>
     <div class="score-box">
@@ -14,8 +14,8 @@ function scoreTemplate(gameSession){
     <p>Accuracy: <span class="accuracy">${(parseInt(gameSession.correct) / (parseInt(gameSession.correct) + parseInt(gameSession.incorrect))) * 100}%</span></p>
     </div>
     <div id="endgame-buttons">
-    <p class="submitBtn"><a href="../problem/?alias=${gameSession.alias}&operator=${gameSession.operator}&max1=${gameSession.max1}&max2=${gameSession.max2}&level=${gameSession.level}">Retry</a></p>
-    <p class="submitBtn"><a href="/">Exit</a></p>
+    <a class="submitBtn" href="../problem/?alias=${gameSession.alias}&operator=${gameSession.operator}&max1=${gameSession.max1}&max2=${gameSession.max2}&level=${gameSession.level}"><p>Retry</p></a>
+    <a class="submitBtn" href="/"><p>Exit</p></a>
     </div>
     
     
@@ -34,7 +34,7 @@ export default class EndGame {
     async init() {
         this.gameSession = []
         this.gameSession.push(getLocalStorage(this.alias));
-        console.log(this.gameSession);
+        // console.log(this.gameSession);
         this.display();
     };
 
