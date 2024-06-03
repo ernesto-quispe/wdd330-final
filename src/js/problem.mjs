@@ -9,7 +9,7 @@ function setSettings() {
     const level = getParam("level");
     const correct = getParam("correct") || 0;
     const incorrect = getParam("incorrect") || 0;
-
+    
     let gameSession = {
         "alias": alias,
         "operator": operator,
@@ -129,7 +129,7 @@ export default class ProblemDetails {
             this.checkAnswer(selectedAnswer);
 
             let gameSession = getLocalStorage(this.alias);
-            if (parseInt(gameSession.correct) + parseInt(gameSession.incorrect) < 3) {
+            if (parseInt(gameSession.correct) + parseInt(gameSession.incorrect) < 10) {
                 await this.createProblem(); // recreate the problem
             }
             else {
