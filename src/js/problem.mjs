@@ -7,8 +7,8 @@ function setSettings() {
     const max1 = getParam("max1");
     const max2 = getParam("max2");
     const level = getParam("level");
-    let correct = 0
-    let incorrect = 0
+    const correct = getParam("correct") || 0;
+    const incorrect = getParam("incorrect") || 0;
 
     let gameSession = {
         "alias": alias,
@@ -16,20 +16,12 @@ function setSettings() {
         "max1": max1,
         "max2": max2,
         "level": level,
-        "correct": 0,
-        "incorrect": 0
+        "correct": correct,
+        "incorrect": incorrect
     }
 
     setLocalStorage(alias, operator, max1, max2, level, correct, incorrect );
     return alias;
-}
-
-async function getProblem(alias) {
-
-    let gameSettings = await getLocalStorage(alias)
-    const dataSource = new ExternalServices();
-    const problem = await dataSource.getData(gameSettings.max1, gameSettings.max2, gameSettings.level, gameSettings.operator);
-    return problem;
 }
 
 export default class ProblemDetails {
@@ -45,6 +37,14 @@ export default class ProblemDetails {
         await this.createProblem();
     }
 
+    async getProblem(alias) {
+
+        let gameSettings = await getLocalStorage(alias)
+        const dataSource = new ExternalServices();
+        const problem = await dataSource.getData(gameSettings.max1, gameSettings.max2, gameSettings.level, gameSettings.operator);
+        return problem;
+    }
+
     async createProblem() {
 
 
@@ -53,7 +53,7 @@ export default class ProblemDetails {
 
         this.problemDiv.appendChild(this.loaderimage);
 
-        this.fullQuestion = await getProblem(this.alias)
+        this.fullQuestion = await this.getProblem(this.alias)
         this.problemDiv.innerHTML = '';
         let question = document.createElement('h2');
         question.textContent = this.fullQuestion.question;
@@ -118,7 +118,7 @@ export default class ProblemDetails {
             this.checkAnswer(selectedAnswer);
 
             let gameSession = getLocalStorage(this.alias);
-            if (parseInt(gameSession.correct) + parseInt(gameSession.incorrect) < 11){
+            if (parseInt(gameSession.correct) + parseInt(gameSession.incorrect) < 3){
                 await this.createProblem(); // recreate the problem
             }
             else{

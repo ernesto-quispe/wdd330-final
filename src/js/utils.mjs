@@ -135,11 +135,15 @@ export function addListenersRadio() {
     input.addEventListener('change', () => {
       radioInputs.forEach((input) => {
         input.parentElement.style.color = '';
+        input.parentElement.style.backgroundColor = 'lightgreen';
       });
       if (input.checked) {
-        input.parentElement.style.color = 'blue';
+        input.parentElement.style.backgroundColor = 'darkcyan';
+        input.parentElement.style.color = 'white';
       } else {
-        input.parentElement.style.color = ''; // Reset to default color
+        input.parentElement.style.backgroundColor = 'lightgreen'; // Reset to default color
+        input.parentElement.style.color = '';
+
       }
     });
   });
