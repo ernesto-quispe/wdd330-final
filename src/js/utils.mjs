@@ -105,13 +105,13 @@ export function alertMessage(message, scroll = true, duration = 3000) {
   if (scroll) window.scrollTo(0, 0);
 
   // left this here to show how you could remove the alert automatically after a certain amount of time.
-  setTimeout(function () {
-    try{
-    main.removeChild(alert);
-    }catch{
-      console.log("alert already removed")
-    }
-  }, duration);
+  // setTimeout(function () {
+  //   try{
+  //   main.removeChild(alert);
+  //   }catch{
+  //     console.log("alert already removed")
+  //   }
+  // }, duration);
 }
 
 export function removeAllAlerts() {

@@ -1,6 +1,7 @@
 :root {
   --blue: #1e90ff;
   --white: #ffffff;
+  --bg: yellow;
 }
 
 h1,
@@ -62,11 +63,13 @@ footer{
 .operationSelector,
 .levelSelector {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   max-width: 90%;
   margin: 10px auto 10px auto;
   border-bottom: solid;
+  padding:10px
 }
 
 .maxNumber {
@@ -163,9 +166,13 @@ label {
 .alert {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-
+  background-image: linear-gradient(rgb(190, 236, 190), lightgreen);
+  margin:10px auto 10px auto;
+  max-width:70%;
+  box-shadow: 2px 2px 5px rgb(122, 202, 122);
+  border-radius: 10px;
 }
 
 .closeAlert {
@@ -179,20 +186,47 @@ label {
 }
 
 .questionForm {
+  position:relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0;
 }
+.questionDiv{
+  width:90%;
+  margin:auto;
+  }
 
-.questionForm div,
-.question {
-  width: 70%;
+.question{
+  margin:auto;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+  max-width:60%;
+  padding: 20px;
+  box-shadow: 2px 3px 5px darkcyan;
 }
 
-.answerLabel,
-.question {
+.question,.answerLabel{
+  border-color:darkcyan;
+}
+
+.answerDiv{
+  width: 80%;
+}
+
+
+.hint{
+  margin:5px;
+  width:60px;
+  height:auto;
+  position:absolute;
+  top:0;
+  right:0;
+}
+
+.answerLabel{
   border-style: solid;
   border-radius: 5px;
   text-align: center;
@@ -239,6 +273,7 @@ label {
   font-size: 1.25em;
   padding:20px;
   border-radius: 10px;
+  text-align: center;
 }
 #endgame-buttons .submitBtn{
   margin-bottom:10px;
@@ -251,11 +286,7 @@ label {
 .submitBtn p{
   margin: 0;
 }
-.hint{
-  margin:5px;
-  width:60px;
-  height:auto;
-}
+
 
 @keyframes l20-0 {
 
@@ -316,12 +347,213 @@ label {
   }
 }
 
+
+.confetti-container{
+  background-color: #101e35;
+  font-size: 10px; /* Makes 1rem = 10px */
+  user-select: none;
+  pointer-events: none;
+  z-index: 10;
+  max-width: 500px;
+  margin:auto;
+}
+
+
+
+.confetti-container label {
+  color: white;
+  font-size: 1.5rem;
+}
+.confetti-container input {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.confetti {
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.confetti .square {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--bg);
+  transform: rotate(140deg);
+}
+
+.confetti .rectangle {
+  width: 1rem;
+  height: 0.5rem;
+  background-color: var(--bg);
+}
+
+.confetti .hexagram {
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 1rem solid var(--bg);
+  position: relative;
+}
+
+.confetti .hexagram:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 1rem solid var(--bg);
+  position: absolute;
+  top: 0.33rem;
+  left: -0.5rem;
+}
+
+.confetti .pentagram {
+  width: 0rem;
+  height: 0rem;
+  display: block;
+  margin: 0.5rem 0;
+  border-right: 1rem solid transparent;
+  border-bottom: 0.7rem solid var(--bg);
+  border-left: 1rem solid transparent;
+  transform: rotate(35deg);
+  position: relative;
+}
+.confetti .pentagram:before {
+  border-bottom: 0.8rem solid var(--bg);
+  border-left: 0.3rem solid transparent;
+  border-right: 0.3rem solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -0.45rem;
+  left: -0.65rem;
+  display: block;
+  content: "";
+  transform: rotate(-35deg);
+}
+.confetti .pentagram:after {
+  position: absolute;
+  display: block;
+  color: var(--bg);
+  top: 0.03rem;
+  left: -1.05rem;
+  width: 0rem;
+  height: 0rem;
+  border-right: 1rem solid transparent;
+  border-bottom: 0.7rem solid var(--bg);
+  border-left: 1rem solid transparent;
+  transform: rotate(-70deg);
+  content: "";
+}
+
+.confetti .dodecagram {
+  background: var(--bg);
+  width: 8px;
+  height: 8px;
+  position: relative;
+}
+
+.confetti .dodecagram:before {
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: var(--bg);
+  transform: rotate(30deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.confetti .dodecagram:after {
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: var(--bg);
+  transform: rotate(60deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.confetti .wavy-line {
+  position: relative;
+}
+.confetti .wavy-line::after,
+.confetti .wavy-line::before {
+  content: "";
+  height: 10px;
+  width: 80px;
+  background-size: 20px 10px;
+  position: absolute;
+  left: -9rem;
+  transform: rotate(90deg);
+}
+
+.confetti .wavy-line::before {
+  background-image: linear-gradient(
+    45deg,
+    transparent,
+    transparent 50%,
+    var(--bg) 50%,
+    transparent 60%
+  );
+  top: 1rem;
+}
+.confetti .wavy-line::after {
+  background-image: linear-gradient(
+    -45deg,
+    transparent,
+    transparent 50%,
+    var(--bg) 50%,
+    transparent 60%
+  );
+}
+
+
+.confetti i {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 0.2rem;
+  animation-name: confetti;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: calc(60s / var(--speed));
+}
+
+.confetti i:nth-child(even) {
+  transform: rotate(90deg);
+}
+
+@keyframes confetti {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+
 @media screen and (max-width: 500px) {
   .logo{
     flex-direction: column;
     align-items: center;
   }
-  #endgame-buttons{
+  #endgame-buttons, .score-box{
+    flex-direction: column;
+  }
+
+  .hint{
+    margin:5px;
+    width:60px;
+    height:auto;
+    position:static;
+  }
+
+  .alert {
     flex-direction: column;
   }
 }

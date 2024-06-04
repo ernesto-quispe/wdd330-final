@@ -56,14 +56,32 @@ export default class ProblemDetails {
 
         this.fullQuestion = await this.getProblem(this.alias)
         this.problemDiv.innerHTML = '';
-        let question = document.createElement('h2');
-        question.textContent = this.fullQuestion.question;
-        question.className = "question";
-        let answerDiv = document.createElement('div');
+
         let form = document.createElement('form');
         form.className = "questionForm";
         form.action = './index.html'; // Set the form action attribute
-        form.appendChild(question);
+
+
+        let questionDiv = document.createElement('div');
+        questionDiv.className="questionDiv"
+        let question = document.createElement('h2');
+        question.textContent = this.fullQuestion.question;
+        question.className = "question";
+
+        
+        let hintIcon = document.createElement('img');
+        hintIcon.src = '/images/hint.webp';
+        hintIcon.alt = 'Hint';
+        hintIcon.title = 'Disable one wrong answer.';
+        hintIcon.onclick = this.disableRandomWrongAnswer;
+        hintIcon.className = "hint";
+
+        questionDiv.appendChild(question);
+        form.appendChild(questionDiv);
+        form.appendChild(hintIcon);
+
+        let answerDiv = document.createElement('div');
+        answerDiv.className = "answerDiv";
 
 
         let correctAnswerElement = document.createElement('input');
@@ -112,14 +130,9 @@ export default class ProblemDetails {
         submitButton.textContent = 'Submit Answer';
         submitButton.className = "submitBtn"
         
-        let hintIcon = document.createElement('img');
-        hintIcon.src = '/images/hint.webp';
-        hintIcon.alt = 'Hint';
-        hintIcon.title = 'Disable one wrong answer.';
-        hintIcon.onclick = this.disableRandomWrongAnswer;
-        hintIcon.className = "hint";
 
-        form.appendChild(hintIcon);
+
+        
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault(); // prevent page reload
@@ -153,7 +166,6 @@ export default class ProblemDetails {
         const randomIndex = Math.floor(Math.random() * wrongAnswers.length);
         const randomWrongAnswer = wrongAnswers[randomIndex];
         randomWrongAnswer.disabled = true;
-        randomWrongAnswer.parentNode.style.background = "grey"; // Change the background of the parent label
         randomWrongAnswer.parentNode.style.opacity = "0.5"; //
         const hint = document.querySelector(".hint");
         // console.log(this.level)
@@ -187,7 +199,7 @@ export default class ProblemDetails {
             gameSession.incorrect += 1;
             setLocalStorage(this.alias, gameSession.operator, gameSession.max1, gameSession.max2, gameSession.level, gameSession.correct, gameSession.incorrect)
 
-            alertMessage("Incorrect. The correct answer is " + correctAnswer);
+            alertMessage("The correct answer is " + correctAnswer);
         }
     }
 
