@@ -13,12 +13,12 @@
   <meta name="author" content="Ernesto Quispe">
   <link rel="icon" href="images/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="/css/style.css" /> -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" type="module"></script>
 </head>
-<header class="divider" id="main-header"></header>
+
 <body>
+  <header class="divider" id="main-header"></header>
 
   <main>
     <h1>Math Adventure</h1>
@@ -27,43 +27,50 @@
       <form action="problem/" method="GET">
         <label>Enter Your Name: <input type="text" id="alias" name="alias" required></label>
         <div class="operationSelector">
-        <label class="operationLabels"><input type="radio" id="sum" name="operator" value="sum" checked required class="operationRadio">
-          <img src="public/images/plusIcon-green-100.webp" alt="Addition Icon" class="operationImage checked">
+          <label class="operationLabels"><input type="radio" id="sum" name="operator" value="sum" checked required
+              class="operationRadio">
+            <img src="public/images/plusIcon-green-100.webp" alt="Addition Icon" class="operationImage checked">
 
-          <img src="public/images/plusIcon-100.webp" alt="Addition Icon" class="operationImage">
-        </label>
-        <label class="operationLabels"><input type="radio" id="sub" name="operator" value="sub" required class="operationRadio">
-          <img src="public/images/minusIcon-green-100.webp" alt="Subtraction Icon" class="operationImage checked">
+            <img src="public/images/plusIcon-100.webp" alt="Addition Icon" class="operationImage">
+          </label>
+          <label class="operationLabels"><input type="radio" id="sub" name="operator" value="sub" required
+              class="operationRadio">
+            <img src="public/images/minusIcon-green-100.webp" alt="Subtraction Icon" class="operationImage checked">
 
-          <img src="public/images/minusIcon-100.webp" alt="Subtraction Icon" class="operationImage">
-        </label>
-        <label class="operationLabels"><input type="radio" id="mul" name="operator" value="mul" required class="operationRadio">
-          <img src="public/images/multiplyIcon-green-100.webp" alt="Multiplication Icon"
-            class="operationImage checked">
+            <img src="public/images/minusIcon-100.webp" alt="Subtraction Icon" class="operationImage">
+          </label>
+          <label class="operationLabels"><input type="radio" id="mul" name="operator" value="mul" required
+              class="operationRadio">
+            <img src="public/images/multiplyIcon-green-100.webp" alt="Multiplication Icon"
+              class="operationImage checked">
 
-          <img src="public/images/multiplyIcon-100.webp" alt="Multiplication Icon" class="operationImage">
-        </label>
-        <label class="operationLabels"><input type="radio" id="divide" name="operator" value="div" required class="operationRadio">
-          <img src="public/images/divideIcon-green-100.webp" alt="Division Icon" class="operationImage checked">
+            <img src="public/images/multiplyIcon-100.webp" alt="Multiplication Icon" class="operationImage">
+          </label>
+          <label class="operationLabels"><input type="radio" id="divide" name="operator" value="div" required
+              class="operationRadio">
+            <img src="public/images/divideIcon-green-100.webp" alt="Division Icon" class="operationImage checked">
 
-          <img src="public/images/divideIcon-100.webp" alt="Division Icon" class="operationImage">
-        </label>
-      </div>
-      <div class="levelSelector">
-        <label class="levelLabels"><input type="radio" id="easy" name="level" value="easy" checked required class="levelRadio">Easy
-        </label>
-        <label class="levelLabels"><input type="radio" id="hard" name="level" value="hard" required class="levelRadio">Hard
-      </div>
-      <label class="maxNumber">Enter max for first number: <input type="number" id="max1" name="max1" value="10" required></label>
-      <label class="maxNumber">Enter max for second number: <input type="number" id="max2" name="max2" value="10" required></label>
+            <img src="public/images/divideIcon-100.webp" alt="Division Icon" class="operationImage">
+          </label>
+        </div>
+        <div class="levelSelector">
+          <label class="levelLabels"><input type="radio" id="easy" name="level" value="easy" checked required
+              class="levelRadio">Easy
+          </label>
+          <label class="levelLabels"><input type="radio" id="hard" name="level" value="hard" required
+              class="levelRadio">Hard</label>
+        </div>
+        <label class="maxNumber">Enter max for first number: <input type="number" id="max1" name="max1" value="10"
+            required></label>
+        <label class="maxNumber">Enter max for second number: <input type="number" id="max2" name="max2" value="10"
+            required></label>
 
         <input class="submitBtn" id="startGame" type="submit" value="START GAME">
       </form>
     </div>
   </main>
-  <footer id="main-footer"> 
+  <footer id="main-footer">
   </footer>
 </body>
 
 </html>
-
