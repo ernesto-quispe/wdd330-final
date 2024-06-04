@@ -27,30 +27,36 @@
       <form action="problem/" method="GET">
         <label>Enter Your Name: <input type="text" id="alias" name="alias" required></label>
         <div class="operationSelector">
-          <label class="operationLabels"><input type="radio" id="sum" name="operator" value="sum"
+          <label class="operationLabels" title="Add Operator"><input type="radio" id="sum" name="operator" value="sum" required
               class="operationRadio">
             <img src="public/images/plusIcon-green-100.webp" alt="Addition Icon" class="operationImage checked">
 
             <img src="public/images/plusIcon-100.webp" alt="Addition Icon" class="operationImage">
           </label>
-          <label class="operationLabels"><input type="radio" id="sub" name="operator" value="sub"
+          <label class="operationLabels" title="Subtract Operator"><input type="radio" id="sub" name="operator" value="sub" required
               class="operationRadio">
             <img src="public/images/minusIcon-green-100.webp" alt="Subtraction Icon" class="operationImage checked">
 
             <img src="public/images/minusIcon-100.webp" alt="Subtraction Icon" class="operationImage">
           </label>
-          <label class="operationLabels"><input type="radio" id="mul" name="operator" value="mul"
+          <label class="operationLabels" title="Multiply Operator"><input type="radio" id="mul" name="operator" value="mul" required
               class="operationRadio">
             <img src="public/images/multiplyIcon-green-100.webp" alt="Multiplication Icon"
               class="operationImage checked">
 
             <img src="public/images/multiplyIcon-100.webp" alt="Multiplication Icon" class="operationImage">
           </label>
-          <label class="operationLabels"><input type="radio" id="divide" name="operator" value="div"
+          <label class="operationLabels" title="Divide Operator"><input type="radio" id="divide" name="operator" value="div" required
               class="operationRadio">
             <img src="public/images/divideIcon-green-100.webp" alt="Division Icon" class="operationImage checked">
 
             <img src="public/images/divideIcon-100.webp" alt="Division Icon" class="operationImage">
+          </label>
+          <label class="operationLabels" title="Random Operators"><input type="radio" id="random" name="operator" value="" required
+              class="operationRadio">
+            <img src="public/images/asterisk-green-100.webp" alt="Division Icon" class="operationImage checked">
+
+            <img src="public/images/asterisk-100.webp" alt="Division Icon" class="operationImage">
           </label>
         </div>
         <div class="levelSelector">
