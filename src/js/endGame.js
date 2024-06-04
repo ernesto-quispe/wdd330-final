@@ -1,4 +1,4 @@
-import { loadHeaderFooter, activateOperationButtons, getParam } from "./utils.mjs";
+import { loadHeaderFooter, activateOperationButtons, getParam, getLocalStorage } from "./utils.mjs";
 
 import EndGame from "./endGame.mjs"
 
