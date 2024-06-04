@@ -9,7 +9,7 @@ function setSettings() {
     const level = getParam("level");
     const correct = getParam("correct") || 0;
     const incorrect = getParam("incorrect") || 0;
-    
+
     let gameSession = {
         "alias": alias,
         "operator": operator,
@@ -63,12 +63,12 @@ export default class ProblemDetails {
 
 
         let questionDiv = document.createElement('div');
-        questionDiv.className="questionDiv"
+        questionDiv.className = "questionDiv"
         let question = document.createElement('h2');
         question.textContent = this.fullQuestion.question;
         question.className = "question";
 
-        
+
         let hintIcon = document.createElement('img');
         hintIcon.src = '/images/hint.webp';
         hintIcon.alt = 'Hint';
@@ -129,10 +129,10 @@ export default class ProblemDetails {
         submitButton.type = 'submit';
         submitButton.textContent = 'Submit Answer';
         submitButton.className = "submitBtn"
-        
 
 
-        
+
+
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault(); // prevent page reload

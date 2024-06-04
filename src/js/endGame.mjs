@@ -50,16 +50,14 @@ export default class EndGame {
     async init() {
         this.gameSession = []
         this.gameSession.push(getLocalStorage(this.alias));
+        this.display();
 
-        document.addEventListener("DOMContentLoaded", () =>{
-            this.display();
-          });
     };
 
     display() {
         this.endGameDiv.innerHTML = '';
         this.endGameDiv.appendChild(this.loaderimage);
-        
+
         const confettiContainer = document.querySelector('.confetti-container');
 
         const confetti = document.createElement('div')
