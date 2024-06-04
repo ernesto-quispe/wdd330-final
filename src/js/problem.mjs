@@ -3,7 +3,7 @@ import ExternalServices from "./ExternalServices.mjs";
 
 function setSettings() {
     const alias = getParam("alias");
-    const operator = getParam("operator");
+    const operator = getParam("operator") || "";
     const max1 = getParam("max1");
     const max2 = getParam("max2");
     const level = getParam("level");
@@ -88,6 +88,7 @@ export default class ProblemDetails {
         correctAnswerElement.type = 'radio';
         correctAnswerElement.name = 'answer';
         correctAnswerElement.value = this.fullQuestion.answer;
+        correctAnswerElement.setAttribute('required', 'required');
         correctAnswerElement.className = "answerRadio"
         let correctAnswerLabel = document.createElement('label');
         correctAnswerLabel.textContent = this.fullQuestion.answer;
@@ -102,6 +103,7 @@ export default class ProblemDetails {
             wrongAnswerElement.value = wrongAnswer;
             wrongAnswerElement.className = "answerRadio"
             wrongAnswerElement.classList.add("wrong-answer")
+            wrongAnswerElement.setAttribute('required', 'required');
             let wrongAnswerLabel = document.createElement('label');
             wrongAnswerLabel.className = "answerLabel"
             wrongAnswerLabel.textContent = wrongAnswer;
