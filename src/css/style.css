@@ -72,6 +72,10 @@ footer{
   padding:10px
 }
 
+.operationLabels{
+  margin:5px;
+}
+
 .maxNumber {
   align-items: center;
   justify-content: center;
@@ -554,5 +558,8 @@ label {
 
   .alert {
     flex-direction: column;
+  }
+  .operationSelector{
+    flex-wrap: wrap;
   }
 }
