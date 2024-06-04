@@ -161,6 +161,13 @@ export default class ProblemDetails {
         form.appendChild(problemDetails);
         this.problemDiv.appendChild(form);
         addListenersRadio();
+        try{
+            this.problemDiv.scrollIntoView({ behavior: "smooth" });
+            }
+        catch{
+            console.log("failed to scroll");
+            }
+
     }
 
     disableRandomWrongAnswer = () => {
